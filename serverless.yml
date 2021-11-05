@@ -1,0 +1,18 @@
+service: aws-node-http-api-project
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+plugins:
+  - serverless-offline
+custom:
+  serverless-offline:
+    useDocker: true
+functions:
+  index:
+    handler: dist/lambda/create.execute
+    events:
+      - httpApi:
+          path: /test
+          method: get
